@@ -1,5 +1,4 @@
 #!/bin/bash
-
 myproject="mipdd_base_rest_api"
 virtualenv /opt/$myproject_env
 source /opt/$myproject_env/bin/activate
