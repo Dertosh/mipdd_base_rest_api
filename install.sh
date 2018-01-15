@@ -3,7 +3,7 @@
 myproject = "mipdd_base_rest_api"
 virtualenv /opt/$(myproject)_env
 source /opt/$(myproject)_env/bin/activate
-pip3 install -r req.txt
+pip3 install -r $(myproject)/req.txt
 cpus = $(cat /proc/cpuinfo | grep processor | wc -l)
 echo "workers = $cpus" > $(myproject)/gunicorn.conf.py
 #mkdir /opt/$myproject/$myproject
