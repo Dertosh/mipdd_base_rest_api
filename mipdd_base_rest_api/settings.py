@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 # Let's just use the local mongod instance. Edit as needed.
 
 # Please note that MONGO_HOST and MONGO_PORT could very well be left
@@ -14,11 +17,13 @@ MONGO_DBNAME = 'mipdd'
 # По умолчанию Eve запускает API в режиме "read-only" (т.е. поддерживаются только GET запросы),
 # мы включаем поддержку методов POST, PUT, PATCH, DELETE.
 RESOURCE_METHODS = ['GET', 'POST', 'DELETE']
-ITEM_METHODS = ['GET', 'PATCH', 'PUT', 'DELETE']
+ITEM_METHODS = ['GET', 'PATCH', 'PUT']
+#PUBLIC_METHODS = ['GET', 'POST']
+#PUBLIC_ITEM_METHODS = ['GET','POST']
 
 DOMAIN = {
     # Описываем ресурс `/users`
-    'users': {
+    'accounts': {
         # Здесь мы описываем модель данных. Для валидации используется модуль Cerberus от автора Eve.
         # Вы можете ознакомиться с ним в официальной документации модуля http://docs.python-cerberus.org/en/stable/.
         # Либо прочитать заметки в официальной документации EVE http://python-eve.org/validation.html#validation.
@@ -46,7 +51,7 @@ DOMAIN = {
             'role': {
 
                 'type': 'list',  # тип: список
-                'allowed': ["author", "contributor"],  # разрешаем использовать значения: "author", "contributor"
+                'allowed': ["operator", "staff", "admin"],  # разрешаем использовать значения: "author", "contributor"
             },
             'location': {
                 'type': 'dict',  # тип: словарь
