@@ -1,4 +1,5 @@
-#!/usr/bin/python
+#!/usr/bin/env
+#!/usr/bin/pytho
 # -*- coding: utf-8 -*-
 
 from eve import Eve
