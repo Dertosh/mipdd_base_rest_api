@@ -4,11 +4,19 @@
 
 from eve import Eve
 from eve.auth import HMACAuth
-from flask import current_app as app
+from flask import current_app
 from hashlib import sha1
 import hmac
 
 from werkzeug.contrib.fixers import ProxyFix
+
+app = Eve()
+
+with app.app_context():
+    # within this block, current_app points to app.
+    print(current_app.name)
+
+app.wsgi_app = ProxyFix(app.wsgi_app)
 
 
 class HMACAuth(HMACAuth):
@@ -26,6 +34,4 @@ class HMACAuth(HMACAuth):
 
 if __name__ == '__main__':
     #app = Eve(auth=HMACAuth)
-    app = Eve()
-    app.wsgi_app = ProxyFix(app.wsgi_app)
     app.run()
